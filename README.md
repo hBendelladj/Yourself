@@ -1,6 +1,7 @@
 # YourSelf 🎭 — Real-Time 3D Conversational Avatar from a Single Photo
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo on Netlify](https://img.shields.io/badge/Live_Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://creative-sawine-ce7b5b.netlify.app/settings)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![React 19](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -11,29 +12,29 @@
 
 > **Transform a single 2D photograph into an expressive, photorealistic 3D conversational avatar powered by real-time voice through Gemini Live — running 100% locally on the browser's CPU and WebGL at 60 FPS.**
 
+🚀 **Try the Live Web Demo:** **[https://creative-sawine-ce7b5b.netlify.app/settings](https://creative-sawine-ce7b5b.netlify.app/settings)** 🚀
+
 ---
 
 ## 🎬 Demo Video in Action
 
 Watch **YourSelf** animate with live bidirectional voice conversation, realistic lipsync, natural head movement, and procedural teeth & eyes:
 
-[![YourSelf Demo Video](https://img.youtube.com/vi/N2AnW9WavoM/maxresdefault.jpg)](https://youtu.be/N2AnW9WavoM)
+<a href="https://youtu.be/N2AnW9WavoM" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/N2AnW9WavoM/maxresdefault.jpg" alt="YourSelf Demo Video" width="100%" />
+</a>
 
-👉 **[Click here to watch the full demo on YouTube](https://youtu.be/N2AnW9WavoM)** 👈
+<p align="center">
+  👉 <a href="https://youtu.be/N2AnW9WavoM" target="_blank" rel="noopener noreferrer"><b>Click here to watch the full demo on YouTube</b></a> 👈
+</p>
 
 ---
 
 ## 💖 Support the Project / Donate via Binance
 
-If you find **YourSelf** impressive and want to support its continued open-source development, improvements, and research, you can support the creator directly via **Binance Pay**:
+If you find **YourSelf** impressive and want to support its continued open-source development, improvements, and research, you can support the creator directly via Binance Pay using the Binance ID: **[<u>987988644</u>](https://www.binance.com)**.
 
-> ### 🪙 **Binance Pay ID (Crypto Deposit):**
-> ```text
-> 987988644
-> ```
-> 📋 **Click the copy button on the top-right corner of the box above** to copy `987988644` to your clipboard instantly!
-> 
-> *Every donation helps maintain this project completely open-source, serverless, and privacy-first. Thank you immensely for your generosity!* 🙏
+*Every donation helps maintain this project completely open-source, serverless, and privacy-first. Thank you immensely for your generosity!* 🙏
 
 ---
 
@@ -135,7 +136,7 @@ yourself/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/yourself.git
+   git clone https://github.com/jhordy2004/Yourself.git
    cd yourself
    ```
 
@@ -235,27 +236,3 @@ Actually, the test image I used throughout the entire development of this projec
 ## 📄 License
 
 This project is open-source and licensed under the **[MIT License](LICENSE)**.
-
-```
-MIT License
-
-Copyright (c) 2026 Jhordyn Cordova
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
