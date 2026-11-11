@@ -1,6 +1,6 @@
 # YourSelf 🎭 — Real-Time 3D Conversational Avatar from a Single Photo
 
-[![Live Demo on Netlify](https://img.shields.io/badge/Live_Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://creative-sawine-ce7b5b.netlify.app/settings)
+[![Live Demo on Netlify](https://img.shields.io/badge/Live_Demo-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://creative-sawine-ce7b5b.netlify.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![React 19](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -12,7 +12,9 @@
 
 > **Transform a single 2D photograph into an expressive, photorealistic 3D conversational avatar powered by real-time voice through Gemini Live — running 100% locally on the browser's CPU and WebGL at 60 FPS.**
 
-🚀 **Try the Live Web Demo:** **[https://creative-sawine-ce7b5b.netlify.app/settings](https://creative-sawine-ce7b5b.netlify.app/settings)** 🚀
+<p align="center">
+  🚀 <b>Try the Live Web Demo:</b> <a href="https://creative-sawine-ce7b5b.netlify.app/" target="_blank" rel="noopener noreferrer"><b>https://creative-sawine-ce7b5b.netlify.app/</b></a> 🚀
+</p>
 
 ---
 
@@ -32,7 +34,16 @@ Watch **YourSelf** animate with live bidirectional voice conversation, realistic
 
 ## 💖 Support the Project / Donate via Binance
 
-If you find **YourSelf** impressive and want to support its continued open-source development, improvements, and research, you can support the creator directly via Binance Pay using the Binance ID: **[<u>987988644</u>](https://www.binance.com)**.
+If you find **YourSelf** impressive and want to support its continued open-source development, improvements, and research, you can copy the Binance ID by:
+
+<details>
+<summary>You can copy the Binance ID by <b><u>clicking here</u></b></summary>
+
+```text
+987988644
+```
+*(ID Copied / Ready to copy via the clipboard icon)*
+</details>
 
 *Every donation helps maintain this project completely open-source, serverless, and privacy-first. Thank you immensely for your generosity!* 🙏
 
