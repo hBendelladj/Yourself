@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgArch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <rect width="920" height="540" fill="url(#bgArch)" rx="16" />
+
+  <text x="460" y="34" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">
+    Comparativa Arquitectónica: V1 (Línea Base) vs V2 (Modular 100% CPU)
+  </text>
+  <text x="460" y="56" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">
+    Evolución de un pipeline monolítico y reactivo hacia capas desacopladas (inspiradas en Hallo/LiveTalking/VASA-1)
+  </text>
+
+  <!-- SECCIÓN SUPERIOR: V1 (LÍNEA BASE) -->
+  <g transform="translate(30, 80)">
+    <rect width="860" height="180" fill="#1e293b" rx="12" stroke="#e11d48" stroke-width="1.5" />
+    <rect x="0" y="0" width="160" height="26" fill="#881337" rx="6" />
+    <text x="80" y="17" fill="#fecdd3" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+      ARQUITECTURA V1 (ACTUAL)
+    </text>
+
+    <!-- Bloque 1: Audio Reactivo -->
+    <rect x="25" y="45" width="160" height="65" fill="#0f172a" rx="8" stroke="#334155" />
+    <text x="105" y="68" fill="#f8fafc" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">AnalyserNode</text>
+    <text x="105" y="86" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif" text-anchor="middle">RMS + 3 Bandas Frec.</text>
+    <text x="105" y="100" fill="#f43f5e" font-size="9" font-family="monospace" text-anchor="middle">jawOpen = RMS^0.85</text>
+
+    <line x1="185" y1="77" x2="225" y2="77" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)" />
+
+    <!-- Bloque 2: Renderer & Fallback -->
+    <rect x="230" y="45" width="175" height="65" fill="#0f172a" rx="8" stroke="#e11d48" />
+    <text x="317" y="68" fill="#f8fafc" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Fallback Cadencia (L338)</text>
+    <text x="317" y="86" fill="#fca5a5" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">speaking &amp; jaw &lt; 0.005</text>
+    <text x="317" y="100" fill="#f87171" font-size="9" font-family="monospace" text-anchor="middle">sin(t*0.007)*0.22 (Boca sola)</text>
+
+    <line x1="405" y1="77" x2="445" y2="77" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)" />
+
+    <!-- Bloque 3: PoseDeformer & Idle -->
+    <rect x="450" y="45" width="185" height="65" fill="#0f172a" rx="8" stroke="#334155" />
+    <text x="542" y="68" fill="#f8fafc" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">PoseDeformer + 2 Senos</text>
+    <text x="542" y="86" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Mandíbula vertical / Parallax 2D</text>
+    <text x="542" y="100" fill="#f43f5e" font-size="9" font-family="monospace" text-anchor="middle">Iris arrastrado ×1.10 al párpado</text>
+
+    <line x1="635" y1="77" x2="675" y2="77" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)" />
+
+    <!-- Bloque 4: Mesh Delaunay & Hueco -->
+    <rect x="680" y="45" width="155" height="65" fill="#0f172a" rx="8" stroke="#f59e0b" />
+    <text x="757" y="68" fill="#f8fafc" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Hueco Delaunay</text>
+    <text x="757" y="86" fill="#fde68a" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Triángulos orales filtrados</text>
+    <text x="757" y="100" fill="#f59e0b" font-size="9" font-family="monospace" text-anchor="middle">Cavidad fija detrás z=-0.0025</text>
+
+    <!-- Resumen V1 -->
+    <text x="430" y="145" fill="#fda4af" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">
+      Problemas: Boca abre sola sin audio • Párpados aplastan iris • Malla con hueco transparente • Cabeza en senos fijos
+    </text>
+  </g>
+
+  <!-- SECCIÓN INFERIOR: V2 (OBJETIVO) -->
+  <g transform="translate(30, 290)">
+    <rect width="860" height="225" fill="#1e293b" rx="12" stroke="#06b6d4" stroke-width="1.5" />
+    <rect x="0" y="0" width="160" height="26" fill="#0891b2" rx="6" />
+    <text x="80" y="17" fill="#ecfeff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+      ARQUITECTURA V2 (OBJETIVO)
+    </text>
+
+    <!-- Bloque 1: Audio & DSP -->
+    <rect x="25" y="45" width="170" height="85" fill="#0f172a" rx="8" stroke="#334155" />
+    <text x="110" y="68" fill="#38bdf8" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Audio + Anticipación</text>
+    <text x="110" y="86" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">DelayNode (60-80 ms)</text>
+    <text x="110" y="102" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Transcripción + es-g2p</text>
+    <text x="110" y="118" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">SyllableClock + AudioClock</text>
+
+    <line x1="195" y1="87" x2="235" y2="87" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Bloque 2: Director (3 Capas Hallo/VASA-1) -->
+    <rect x="240" y="45" width="180" height="85" fill="#0f172a" rx="8" stroke="#0891b2" />
+    <text x="330" y="68" fill="#38bdf8" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Director (3 Capas)</text>
+    <text x="330" y="86" fill="#67e8f9" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">1. LABIOS (Visemas rápidos)</text>
+    <text x="330" y="102" fill="#67e8f9" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">2. EXPRESIÓN (Valencia/Arousal)</text>
+    <text x="330" y="118" fill="#67e8f9" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">3. POSE (Cabeza 3D + Mirada)</text>
+
+    <line x1="420" y1="87" x2="460" y2="87" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Bloque 3: Dynamics (2do Orden) + Rig -->
+    <rect x="465" y="45" width="180" height="85" fill="#0f172a" rx="8" stroke="#334155" />
+    <text x="555" y="68" fill="#38bdf8" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Dinámica 2º Orden &amp; Rig</text>
+    <text x="555" y="86" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Resortes (ζ=1) + Ruido 1D</text>
+    <text x="555" y="102" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Mandíbula con pivote cóndilo</text>
+    <text x="555" y="118" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">Base normalizada por faceScale</text>
+
+    <line x1="645" y1="87" x2="685" y2="87" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Bloque 4: Overlays & Shading -->
+    <rect x="690" y="45" width="150" height="85" fill="#0f172a" rx="8" stroke="#38bdf8" />
+    <text x="765" y="68" fill="#38bdf8" font-size="11" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">Overlays &amp; Shading</text>
+    <text x="765" y="86" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Párpado con piel propia</text>
+    <text x="765" y="102" fill="#94a3b8" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">Boca overlay (malla intacta)</text>
+    <text x="765" y="118" fill="#38bdf8" font-size="9" font-family="monospace" text-anchor="middle">Pseudo-volumen por compresión</text>
+
+    <!-- Resumen V2 -->
+    <text x="430" y="165" fill="#67e8f9" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">
+      Soluciones: Labios intactos en reposo • Párpados de piel sin aplastar iris • Rotación con cuello y profundidad • Cierres bilabiales /m/ /b/ /p/
+    </text>
+    <text x="430" y="195" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif" text-anchor="middle">
+      Presupuesto: Prosodia+Visemas ≤0.8ms | Director+Dynamics ≤0.4ms | Rig ≤0.8ms | Overlays+Shading ≤1.0ms | Total JS ≤4.0ms
+    </text>
+  </g>
+</svg>

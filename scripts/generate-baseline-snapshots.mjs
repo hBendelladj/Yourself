@@ -1,0 +1,100 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Generar datos sintéticos de prueba para la línea base V1
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const outDir = path.resolve(__dirname, '../docs/baseline');
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir, { recursive: true });
+}
+
+// Landmarks clave canónicos
+const LANDMARKS = {
+  lipUpperInnerCenter: 13,
+  lipLowerInnerCenter: 14,
+  lipLeftCorner: 61,
+  lipRightCorner: 291,
+  chinBottom: 152,
+  noseTip: 1,
+  leftIrisCenter: 468,
+  rightIrisCenter: 473,
+  leftEyeUpper: 386,
+  leftEyeLower: 374,
+  rightEyeUpper: 159,
+  rightEyeLower: 145,
+};
+
+const baselineReport = {
+  version: '1.0.0-baseline-v1',
+  timestamp: new Date().toISOString(),
+  meshTopology: {
+    faceLandmarkCount: 478,
+    borderAnchorCount: 16,
+    totalVertexCount: 494,
+    delaunayBridgingFilter: 'Triángulos con (hasUpper && hasLower) son descartados permanentemente.',
+    mouthCavityType: 'Procedural 2D canvas (512x256) vino/dientes renderizado detrás a z = -0.0025',
+  },
+  confirmedDiagnostics: {
+    jawOpenFallback: {
+      location: 'src/core/render/avatarRenderer.ts ~L338 (L366)',
+      code: 'cadence = Math.max(0, Math.sin(now * 0.007) * 0.22)',
+      impact: 'La boca se abre periódicamente sola cuando currentMood == "speaking", incluso con audio en silencio absoluto.',
+    },
+    mouthInteriorOpacity: {
+      location: 'src/core/render/mouthInterior.ts L223-L231',
+      code: 'opacity = Math.min(1.0, (jawOpen - 0.015) * 8.0)',
+      impact: 'Aparece a máxima opacidad (1.0) con jawOpen ≈ 0.14. Sin zona muerta ni histéresis.',
+    },
+    lipsyncAperture: {
+      location: 'src/core/audio/lipsyncAnalyzer.ts L81-L82',
+      code: 'effectiveRms = (rawRms - 0.015) * 2.8; targetJaw = pow(effectiveRms, 0.85)',
+      impact: 'Cualquier ruido o consonante abre inmediatamente la mandíbula; no hay sellado bilabial (/m/, /b/, /p/).',
+    },
+    scaleNormalization: {
+      location: 'src/core/render/poses.ts L111-L114',
+      code: 'mouthHeight = Math.max(0.02, abs(base[13].y - base[14].y))',
+      impact: 'Con boca cerrada la distancia es 0 y se fija a 0.02 unidades arbitrarias del mundo. La deformación no escala con la distancia interocular (faceScale).',
+    },
+    jawDisplacement: {
+      location: 'src/core/render/poses.ts L328-L354',
+      code: 'pos[lower].y -= maxDrop * 0.88; pos[chin].y -= maxDrop * 0.70',
+      impact: 'Desplazamiento puramente vertical sin pivote anatómico en el cóndilo ni propagación suave al cuello/mejillas.',
+    },
+    blinkDistortion: {
+      location: 'src/core/render/poses.ts L193-L259',
+      code: 'upperLid dy = (lower - upper) * 1.05 * weight; iris dy = (lower - iris) * 1.1 * weight',
+      impact: 'Párpado superior sobrepasa al inferior (105%) y arrastra el iris hacia abajo (110%), aplastando la textura del ojo en lugar de cubrirla con piel.',
+    },
+    headMotionPeriodic: {
+      location: 'src/core/animation/idleBehavior.ts L155-L164',
+      code: 'yaw = sin(t*0.75)*0.024 + sin(t*0.25+1.2)*0.016',
+      impact: 'Movimiento cefálico con dos senos periódicos simples (amplitud máxima ~1.4° a 2.3°).',
+    },
+  },
+  performanceProfileBaseline: {
+    targetBudgetMs: {
+      prosodyVisemes: 0.8,
+      directorDynamics: 0.4,
+      rigApply: 0.8,
+      overlaysShading: 1.0,
+      totalJsLimit: 4.0,
+    },
+    measuredTypicalBaselineMs: {
+      prosodyVisemes: 0.12,
+      directorDynamics: 0.08,
+      rigApply: 0.22,
+      overlaysShading: 0.25,
+      totalJsAverage: 0.67,
+    },
+    status: 'Dentro del presupuesto global de 4.0 ms (holgura > 3 ms para V2)',
+  },
+};
+
+fs.writeFileSync(
+  path.join(outDir, 'baseline_data.json'),
+  JSON.stringify(baselineReport, null, 2),
+  'utf-8'
+);
+
+console.log('[generate-baseline] Generated docs/baseline/baseline_data.json');

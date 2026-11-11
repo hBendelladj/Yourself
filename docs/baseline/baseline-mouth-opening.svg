@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="lipColor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <linearGradient id="wineCavity" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d0204" />
+      <stop offset="50%" stop-color="#1f060a" />
+      <stop offset="100%" stop-color="#3b0712" />
+    </linearGradient>
+  </defs>
+
+  <rect width="840" height="440" fill="url(#bg2)" rx="16" />
+
+  <text x="420" y="36" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">
+    Línea Base V1 — Diagnóstico de Boca y Cavidad Bucal (buildMesh + mouthInterior)
+  </text>
+  <text x="420" y="60" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">
+    Triangulación con orificio bucal permanente y textura procedural genérica no adaptada a la foto
+  </text>
+
+  <!-- PANEL 1: FOTO ORIGINAL (BOCA CERRADA) -->
+  <g transform="translate(40, 90)">
+    <rect width="235" height="300" fill="#1e293b" rx="12" stroke="#334155" stroke-width="1.5" />
+    <text x="117" y="30" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+      1. Foto Original
+    </text>
+
+    <!-- Labios cerrados continuos -->
+    <ellipse cx="117" cy="140" rx="65" ry="24" fill="url(#lipColor)" />
+    <path d="M 52 140 Q 117 148 182 140" stroke="#881337" stroke-width="3" fill="none" />
+
+    <text x="117" y="210" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">
+      Labios sellados naturales.
+    </text>
+    <text x="117" y="230" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif" text-anchor="middle">
+      Piel e iluminación original.
+    </text>
+    <text x="117" y="270" fill="#38bdf8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">
+      jawOpen = 0.00
+    </text>
+  </g>
+
+  <!-- PANEL 2: FALLO DELAUNAY EN V1 (HUECO VACÍO) -->
+  <g transform="translate(300, 90)">
+    <rect width="240" height="300" fill="#1e293b" rx="12" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="120" y="30" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+      2. Malla V1 (buildMesh)
+    </text>
+
+    <!-- Labio sup e inf separados con fondo hueco transparente -->
+    <!-- Labio superior -->
+    <path d="M 55 125 Q 120 100 185 125 Q 120 120 55 125 Z" fill="url(#lipColor)" />
+    <!-- Labio inferior -->
+    <path d="M 55 140 Q 120 145 185 140 Q 120 165 55 140 Z" fill="url(#lipColor)" />
+
+    <!-- Orificio (hueco) permanente -->
+    <path d="M 55 125 Q 120 120 185 125 Q 120 145 55 140 Z" fill="#020617" stroke="#f59e0b" stroke-dasharray="3 2" />
+
+    <rect x="20" y="180" width="200" height="60" fill="#451a03" rx="6" opacity="0.8" />
+    <text x="120" y="200" fill="#fde68a" font-size="10" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">
+      Filtro hasUpper &amp;&amp; hasLower:
+    </text>
+    <text x="120" y="216" fill="#fef3c7" font-size="9.5" font-family="system-ui, sans-serif" text-anchor="middle">
+      Se descartan los triángulos.
+    </text>
+    <text x="120" y="230" fill="#fef3c7" font-size="9" font-family="system-ui, sans-serif" text-anchor="middle">
+      Con jawOpen &lt; 0.015, el hueco
+    </text>
+    <text x="120" y="244" fill="#fef3c7" font-size="9" font-family="system-ui, sans-serif" text-anchor="middle">
+      muestra el fondo del canvas.
+    </text>
+
+    <text x="120" y="275" fill="#f59e0b" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">
+      mesh.visible = false
+    </text>
+  </g>
+
+  <!-- PANEL 3: CAVIDAD PROCEDURAL GENÉRICA EN V1 -->
+  <g transform="translate(565, 90)">
+    <rect width="235" height="300" fill="#1e293b" rx="12" stroke="#e11d48" stroke-width="1.5" />
+    <text x="117" y="30" fill="#f43f5e" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+      3. Cavidad Procedural V1
+    </text>
+
+    <!-- Labios abiertos -->
+    <path d="M 52 110 Q 117 85 182 110 Q 117 115 52 110 Z" fill="url(#lipColor)" />
+    <path d="M 52 155 Q 117 160 182 155 Q 117 185 52 155 Z" fill="url(#lipColor)" />
+
+    <!-- Cavidad vino -->
+    <path d="M 55 112 Q 117 115 180 112 Q 117 158 55 155 Z" fill="url(#wineCavity)" />
+
+    <!-- 8 Dientes superiores genéricos fijos siempre visibles -->
+    <g transform="translate(68, 114)">
+      <rect x="0" width="10" height="12" fill="#faf8f5" rx="2" />
+      <rect x="12" width="12" height="15" fill="#faf8f5" rx="2" />
+      <rect x="26" width="14" height="18" fill="#faf8f5" rx="2" />
+      <rect x="42" width="15" height="20" fill="#faf8f5" rx="2" />
+      <rect x="59" width="15" height="20" fill="#faf8f5" rx="2" />
+      <rect x="76" width="14" height="18" fill="#faf8f5" rx="2" />
+      <rect x="92" width="12" height="15" fill="#faf8f5" rx="2" />
+      <rect x="106" width="10" height="12" fill="#faf8f5" rx="2" />
+    </g>
+
+    <rect x="15" y="195" width="205" height="60" fill="#881337" rx="6" opacity="0.8" />
+    <text x="117" y="215" fill="#fecdd3" font-size="10" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">
+      Opacidad = (jaw - 0.015) × 8.0:
+    </text>
+    <text x="117" y="230" fill="#fda4af" font-size="9" font-family="system-ui, sans-serif" text-anchor="middle">
+      Apertura mínima (jaw ≈ 0.14)
+    </text>
+    <text x="117" y="244" fill="#fda4af" font-size="9" font-family="system-ui, sans-serif" text-anchor="middle">
+      despliega 8 dientes y vino oscuro
+    </text>
+
+    <text x="117" y="275" fill="#f43f5e" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">
+      jawOpen ≥ 0.14 (100% opaco)
+    </text>
+  </g>
+</svg>

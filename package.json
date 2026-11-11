@@ -1,0 +1,47 @@
+{
+  "name": "yourself",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "predev": "node scripts/fetch-assets.mjs",
+    "build": "tsc && vite build",
+    "prebuild": "node scripts/fetch-assets.mjs",
+    "fetch-assets": "node scripts/fetch-assets.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@google/genai": "2.31.0",
+    "@mediapipe/tasks-vision": "1.1.1",
+    "clsx": "^2.1.1",
+    "delaunator": "^5.0.1",
+    "lucide-react": "^1.16.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1",
+    "three": "^0.186.1",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/delaunator": "^5.0.3",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "prettier": "^3.5.2",
+    "tailwindcss": "^4.0.9",
+    "typescript": "~5.7.3",
+    "typescript-eslint": "^8.25.0",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
+  }
+}

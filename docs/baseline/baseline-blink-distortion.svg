@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="sclera" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="iris" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbcfe8" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)" rx="16" />
+
+  <!-- Title -->
+  <text x="400" y="36" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">
+    Línea Base V1 — Diagnóstico del Parpadeo Antinatural (poses.ts)
+  </text>
+  <text x="400" y="60" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">
+    Comparación entre el reposo normal y el aplastamiento del iris y textura durante el parpadeo en V1
+  </text>
+
+  <!-- PANEL IZQUIERDO: ESTADO REPOSO -->
+  <g transform="translate(60, 90)">
+    <rect width="320" height="280" fill="#1e293b" rx="12" stroke="#334155" stroke-width="1.5" />
+    <text x="160" y="32" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">
+      1. Ojo en Reposo (blink = 0.0)
+    </text>
+
+    <!-- Párpado y Ceja de referencia -->
+    <path d="M 60 70 Q 160 50 260 70" stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" />
+    <text x="160" y="60" fill="#94a3b8" font-size="10" font-family="monospace" text-anchor="middle">Pliegue palpebral superior</text>
+
+    <!-- Contorno Esclera -->
+    <path d="M 60 150 Q 160 85 260 150 Q 160 215 60 150 Z" fill="url(#sclera)" stroke="#475569" stroke-width="2" />
+
+    <!-- Iris y Pupila -->
+    <circle cx="160" cy="150" r="38" fill="url(#iris)" stroke="#0c4a6e" stroke-width="2" />
+    <circle cx="160" cy="150" r="16" fill="#020617" />
+    <circle cx="150" cy="142" r="5" fill="#ffffff" opacity="0.8" />
+
+    <!-- Landmarks superpuestos -->
+    <circle cx="160" cy="98" r="4" fill="#38bdf8" />
+    <text x="160" y="90" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="middle">L386 (Párpado Sup)</text>
+
+    <circle cx="160" cy="202" r="4" fill="#38bdf8" />
+    <text x="160" y="222" fill="#38bdf8" font-size="10" font-family="monospace" text-anchor="middle">L374 (Párpado Inf)</text>
+
+    <circle cx="160" cy="150" r="4" fill="#4ade80" />
+    <text x="160" y="174" fill="#4ade80" font-size="10" font-family="monospace" text-anchor="middle">L468 (Centro Iris)</text>
+  </g>
+
+  <!-- PANEL DERECHO: PARPADEO V1 DEFECTUOSO -->
+  <g transform="translate(420, 90)">
+    <rect width="320" height="280" fill="#1e293b" rx="12" stroke="#e11d48" stroke-width="1.5" />
+    <text x="160" y="32" fill="#f43f5e" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">
+      2. Parpadeo V1 (blink = 1.0)
+    </text>
+
+    <!-- Pliegue aplastado -->
+    <path d="M 60 120 Q 160 150 260 120" stroke="#f43f5e" stroke-width="2" fill="none" stroke-dasharray="4 2" />
+
+    <!-- Esclera colapsada a una franja mínima -->
+    <path d="M 60 195 Q 160 190 260 195 Q 160 205 60 195 Z" fill="#94a3b8" opacity="0.6" />
+
+    <!-- Iris estirado/arrastrado hacia L374 (×1.10) -->
+    <ellipse cx="160" cy="204" rx="36" ry="6" fill="#0369a1" stroke="#e11d48" stroke-width="2" />
+    <ellipse cx="160" cy="204" rx="16" ry="3" fill="#020617" />
+
+    <!-- Vector de arrastre excesivo -->
+    <path d="M 160 102 L 160 198" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="175" y="145" fill="#f43f5e" font-size="11" font-weight="bold" font-family="monospace">
+      dy × 1.05 (105%)
+    </text>
+
+    <!-- Vector de iris arrastrado -->
+    <path d="M 130 150 Q 110 180 135 200" stroke="#fbbf24" stroke-width="2" fill="none" />
+    <text x="50" y="175" fill="#fbbf24" font-size="10" font-family="monospace">
+      Iris arrastrado ×1.10
+    </text>
+
+    <!-- Nota explicativa -->
+    <rect x="20" y="225" width="280" height="42" fill="#881337" rx="6" opacity="0.7" />
+    <text x="160" y="242" fill="#fecdd3" font-size="10" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">
+      Fallo crítico: No se cubre el ojo con piel.
+    </text>
+    <text x="160" y="258" fill="#fda4af" font-size="9" font-family="system-ui, sans-serif" text-anchor="middle">
+      La textura del ojo (esclera, iris, pupila) se comprime en una línea.
+    </text>
+  </g>
+</svg>
